@@ -143,7 +143,7 @@ To test, go to the root folder and type (sans __$__):
  
 ## Repo(s)
 
-* [bitbucket.org/mitchallen/microservice-mongodb-get-one.git](https://bitbucket.org/mitchallen/microservice-mongodb-get-one.git)
+* [bitbucket.org/mitchallen/microservice-mongodb-delete.git](https://bitbucket.org/mitchallen/microservice-mongodb-delete.git)
 
 * * *
 
