@@ -50,7 +50,16 @@ module.exports = function (spec, modCallback) {
             router.delete( path, function (req, res) {
                 var docId = req.params.id;
                 var collection = db.collection(collectionName);
-                collection.findOne({"_id": new ObjectId(docId)}, function(err, doc) {
+                if( ! ObjectId.isValid(docId) ) 
+                {
+                    console.error("MongoID ObjectID is not valid: %s", docId);
+                    return res
+                            .status(404)
+                            .send(new Error());
+                }
+                // Must come AFTER validation or consructor will throw invalid errors
+                var objId = new ObjectId(docId);
+                collection.findOne({"_id": objId}, function(err, doc) {
                     if (err || !doc) {
                         if( err ) {
                             console.error(err);
@@ -59,8 +68,7 @@ module.exports = function (spec, modCallback) {
                             .status(404)
                             .send(err);
                     } else {
-                        collection.deleteOne({ "_id": new ObjectId(docId)}, function(err, results) {
-                            console.log(JSON.stringify(results));
+                        collection.deleteOne({ "_id": objId}, function(err, results) {
                             res
                                 .status(200)
                                 .json({ status: "OK" });

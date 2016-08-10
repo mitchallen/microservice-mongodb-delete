@@ -16,9 +16,7 @@ var service = {
     collectionName: "music",
 };
 
-// TODO - once published use module
-require('../../index')(service, function(err,obj) {
-// require('@mitchallen/microservice-mongodb-delete')(service, function(err,obj) {
+require('@mitchallen/microservice-mongodb-delete')(service, function(err,obj) {
     if( err ) {
         console.log(err);
         throw new Error( err.message );

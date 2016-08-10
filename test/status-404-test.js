@@ -81,4 +81,48 @@ describe('mongodb microservice smoke test', function() {
                 });
         });
     });
+
+    it('delete should return 404 for invalid id', function(done) {
+
+        var options = {
+            name: testName,
+            version: testVersion,
+            verbose: verbose,
+            port: testPort,
+            prefix: testPrefix,
+            mongodb: testMongo,
+            collectionName: testCollectionName
+        };
+        
+        var modulePath = '../index';
+        // Needed for cleanup between tests
+        delete require.cache[require.resolve(modulePath)];
+        require(modulePath)(options, function(err,obj) {
+            should.not.exist(err);
+            should.exist(obj);
+            var server = obj.server;
+            should.exist(server);
+
+            // console.log("TEST URL: " + testUrl);
+
+            var postOptions = {
+                name: testName,
+                version: testVersion,
+                verbose: verbose,
+                port: postPort,
+                prefix: testPrefix,
+                mongodb: testMongo,
+                collectionName: testCollectionName
+            };
+
+            // DELETE
+            request(testHost)
+                .del(testUrl + "/bogus" )
+                .expect(404)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    server.close(done);
+                });
+        });
+    });
 });

@@ -1,7 +1,7 @@
 {
   "name": "@mitchallen/microservice-mongodb-delete",
   "version": "0.1.0",
-  "description": "",
+  "description": "microservice for deleting one record from MongoDB",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive --timeout 20000",
