@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/microservice-mongodb-get-one
+    Module: @mitchallen/microservice-mongodb-delete
     Author: Mitch Allen
 */
 
@@ -45,9 +45,9 @@ module.exports = function (spec, modCallback) {
             var router = info.router,
                    db  = info.connection.mongodb.db;
             demand.notNull(db);
-            // Reference: https://docs.mongodb.com/getting-started/node/query/
+            // Reference: https://docs.mongodb.com/getting-started/node/remove/
             // path does not include prefix (set elsewhere)
-            router.get( path, function (req, res) {
+            router.delete( path, function (req, res) {
                 var docId = req.params.id;
                 var collection = db.collection(collectionName);
                 collection.findOne({"_id": new ObjectId(docId)}, function(err, doc) {
@@ -57,10 +57,12 @@ module.exports = function (spec, modCallback) {
                             .status(404)
                             .send(err);
                     } else {
-                        // If no change, sends 304 Not Modified (See: If-Modified-Since)
-                        res
-                            .status(200)
-                            .json(doc);
+                        collection.deleteOne({ "_id": new ObjectId(docId)}, function(err, doc) {
+                            res
+                                .status(200)
+                                .json({ status: "OK" });
+
+                        });
                     }
                 });
             });
