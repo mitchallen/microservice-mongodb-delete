@@ -122,7 +122,7 @@ describe('mongodb microservice smoke test', function() {
                 collectionName: testCollectionName
             };
 
-            // GET
+            // DELETE
             request(testHost)
                 .del(testUrl + "/" + docId)
                 // MUST USE DOUBLE QUOTES - or JSON.parse bombs in GET.

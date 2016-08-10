@@ -51,13 +51,16 @@ module.exports = function (spec, modCallback) {
                 var docId = req.params.id;
                 var collection = db.collection(collectionName);
                 collection.findOne({"_id": new ObjectId(docId)}, function(err, doc) {
-                    if (err) {
-                        console.error(err);
+                    if (err || !doc) {
+                        if( err ) {
+                            console.error(err);
+                        }
                         res
                             .status(404)
                             .send(err);
                     } else {
-                        collection.deleteOne({ "_id": new ObjectId(docId)}, function(err, doc) {
+                        collection.deleteOne({ "_id": new ObjectId(docId)}, function(err, results) {
+                            console.log(JSON.stringify(results));
                             res
                                 .status(200)
                                 .json({ status: "OK" });
