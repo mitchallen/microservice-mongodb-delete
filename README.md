@@ -78,7 +78,7 @@ Here is the code from the example folder: __examples/music-get/index.js__
 
         node index.js
         
-4. Execute the following in the second terminal window (all on one line) (assumes a Mac or Linux and that port 8005 is not busy). Substitute __{id}__ with an id from a music collection in your database. If you want to see a way to create data for testing, see the __examples/music-delete__ folder in the git repo:
+4. Execute the following in the second terminal window (all on one line) (assumes a Mac or Linux and that the port is not busy). Substitute __{id}__ with an id from a music collection in your database. If you want to see a way to create data for testing, see the __examples/music-delete__ folder in the git repo:
 
         curl -i -X DELETE http://localhost:8005/v1/music/{id}   
 
