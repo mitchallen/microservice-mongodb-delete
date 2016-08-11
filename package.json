@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/microservice-mongodb-delete",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "microservice for deleting one record from MongoDB",
   "main": "index.js",
   "scripts": {
