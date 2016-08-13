@@ -144,6 +144,7 @@ To test, go to the root folder and type (sans __$__):
 ## Repo(s)
 
 * [bitbucket.org/mitchallen/microservice-mongodb-delete.git](https://bitbucket.org/mitchallen/microservice-mongodb-delete.git)
+* [github.com/mitchallen/microservice-mongodb-delete.git](https://github.com/mitchallen/microservice-mongodb-delete.git)
 
 * * *
 
@@ -155,6 +156,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.2
+
+* updated README
 
 #### Version 0.1.1 
 
